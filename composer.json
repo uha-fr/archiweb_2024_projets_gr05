@@ -1,0 +1,25 @@
+{
+    "name": "user/webapp",
+    "description": "uha architecture ntiers",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "UHA\\": "src/",
+            "Http\\": "http/",
+            "Routes\\":"Routes/",
+            "Views\\":"Views/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kevinoustoff",
+            "email": "35457309+kevinoustoff@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^2.18",
+        "symfony/cache": "^5.4",
+        "doctrine/annotations": "^1.0",
+        "doctrine/lexer": "^2.0"
+    }
+}
