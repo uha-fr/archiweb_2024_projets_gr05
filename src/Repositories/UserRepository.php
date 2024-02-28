@@ -3,43 +3,31 @@ namespace UHA\Repositories;
 
 use UHA\Services\Database;
 
-class UserRepository{
-protected $pdo;
-public $table = 'employee'; 
+class UserRepository extends Repository{
 
-public function  __construct(){
-   $database = new Database();
-   $this->pdo =  $database->getPDO();
+public function __construct($name){
+   parent::__construct($name);
 }
 
 public function getAll(){
-    $selectDataSQL = "SELECT * FROM ".$this->table;
-    // echo 'h'.$this->table;
-    $statement = $this->pdo->query($selectDataSQL);    
-    // Fetch all rows as an associative array
-    $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
-    // Display the result
-    return $result;
+   try {
+       $pdo = $this->database->getPDO();
+       $this->table;
+       
+       $query = "SELECT * FROM ".$this->table;
+       
+       // Prepare and execute the query
+       $statement = $pdo->prepare($query);
+       $statement->execute();
+       
+       // Fetch all rows as object class 
+       $result = $statement->fetchAll(\PDO::FETCH_CLASS, 'UHA\Models\User');
+       return $result;
+   } catch (\PDOException $e) {
+       echo "Query failed: " . $e->getMessage();
+   }
 }
+} 
 
-/**
- * Get the value of table
- */ 
-public function getTable()
-{
-   return $this->table;
-}
 
-/**
- * Set the value of table
- *
- * @return  self
- */ 
-public function setTable($table)
-{
-   $this->table = $table;
-
-   return $this;
-}
-}
 ?>

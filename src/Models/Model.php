@@ -1,21 +1,16 @@
 <?php
-   namespace UHA\Models;
-
-use UHA\Services\Database;
+namespace UHA\Models;
 
 abstract class Model{
-   protected static $pdo;
+   
    protected $table; 
+   protected $repository;
 
    public function  __construct(){
-      $database = new Database();
-      self::$pdo =  $database->getPDO();
-      print_r($database->getPDO());
+      
    }
 
-   
-      
-
+   abstract public function getAll();
 
    /**
     * Get the value of table

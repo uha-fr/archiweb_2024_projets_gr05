@@ -4,7 +4,7 @@ use UHA\Controllers\Controller;
 use UHA\Models\User;
 use UHA\Repositories\UserRepository;
 
-class EmployeeController extends Controller {
+class UserController extends Controller {
     public function list(){
         $holla = ['fin','ger','l'];
         $this->view->setTemplateFile('base.phtml');
