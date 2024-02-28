@@ -9,16 +9,9 @@ use UHA\Repositories\UserRepository;
  */
 class User extends Model
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+
     private $id;
 
-    /**
-     * @ORM\Column(type="string")
-     */
     private $username;
 
     private $token;
@@ -27,12 +20,10 @@ class User extends Model
 
     private $password;
 
-    // Other properties and methods...
-
     public function __construct()
     {
         parent::__construct();
-        $this->setTable("employee");
+        $this->setTable("User");
         $this->repository = new UserRepository($this->table);
     }
 
