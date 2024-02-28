@@ -40,5 +40,11 @@ class UserController extends Controller {
         $this->view->setTemplateFile('index.phtml');
         return $this->view->output();
     }
+
+    public function add()
+    {
+        $this->view->setTemplateFile('addUser.phtml');
+        return $this->view->output();
+    }
 }
 ?>
