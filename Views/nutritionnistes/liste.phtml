@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste Nutritionniste</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #002d72;
+            color: white;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 5px #000000;
+        }
+        .btn-add {
+            margin-bottom: 20px;
+            background-color: #007bff; /* Bouton Ajouter */
+            border-color: #007bff;
+        }
+        .table {
+            background-color: #002240; /* Couleur de fond de la table */
+            color: white;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #004080; /* Couleur de fond des lignes impaires */
+        }
+        .table-striped tbody tr:nth-of-type(even) {
+            background-color: #002d72; /* Couleur de fond des lignes paires */
+        }
+        .btn-modify {
+            background-color: #28a745; /* Couleur du bouton modifier */
+            border-color: #28a745;
+        }
+        .btn-delete {
+            background-color: #dc3545; /* Couleur du bouton supprimer */
+            border-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Liste Nutritionniste</h1>
+        <a href="/nutritionniste" class="btn btn-primary btn-add">Ajouter Nutritionniste</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Spécialité</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($this->get('nutritionnistes') as $nutritionniste):?>
+                <tr>
+                    <td><?= $nutritionniste->getNom(); ?></td>
+                    <td><?= $nutritionniste->getPrenom(); ?></td>
+                    <td><?= $nutritionniste->getSpecialite(); ?></td>
+                    <td>
+                        <button class="btn btn-success btn-modify"><i class="fas fa-edit"></i> Modifier</button>
+                        <button class="btn btn-danger btn-delete"><i class="fas fa-trash-alt"></i> Supprimer</button>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+                <!-- Autres lignes du tableau à remplir dynamiquement -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS (facultatif si vous n'utilisez pas de fonctionnalités JS de Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
