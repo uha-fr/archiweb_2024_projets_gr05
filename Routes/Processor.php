@@ -1,6 +1,6 @@
 <?php
-    namespace Routes;
-    use \UHA\Controllers\EmployeeController;
+namespace Routes;
+use \UHA\Controllers\EmployeeController;
 use UHA\Controllers\UserController;
 use \UHA\Routing\Web;
 
