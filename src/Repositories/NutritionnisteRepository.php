@@ -43,6 +43,27 @@ class NutritionnisteRepository extends Repository{
             echo "Query failed: " . $e->getMessage();
         }
      }
+
+     public function getById($id) {
+        try {
+            $pdo = $this->database->getPDO();
+            $query = "SELECT * FROM " . $this->table . " WHERE nutritionniste_id = :id";
+            $statement = $pdo->prepare($query);
+            $statement->execute([':id' => $id]);
+            $nutritionniste = $statement->fetch(\PDO::FETCH_ASSOC);
+
+            // Vérifiez si le nutritionniste a été trouvé
+            if ($nutritionniste) {
+                return $nutritionniste;
+            } else {
+                // Gérer le cas où le nutritionniste n'a pas été trouvé
+                return null;
+            }
+        } catch (\PDOException $e) {
+            echo "Query failed: " . $e->getMessage();
+            return null;
+        }
+    }
      
 
 }
