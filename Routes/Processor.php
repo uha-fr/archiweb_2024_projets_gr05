@@ -1,6 +1,8 @@
 <?php
     namespace Routes;
-    use \UHA\Controllers\EmployeeController;
+
+use UHA\Controllers\CategoryIngredientController;
+use \UHA\Controllers\EmployeeController;
 use UHA\Controllers\NutritionnisteController;
 use UHA\Controllers\UserController;
 use \UHA\Routing\Web;
@@ -34,6 +36,19 @@ use \UHA\Routing\Web;
            
             $router->addRoute('POST', '/nutritionniste/add', function () {
                 return (new NutritionnisteController())->add();
+            });
+
+            //FIN GESTION des nutritionniste
+
+            //Gestion category Ingredient
+            $router->addRoute('GET', '/catingredient', function () {
+                return (new CategoryIngredientController())->form();
+            });
+            $router->addRoute('POST', '/catingredient/add', function () {
+                return (new CategoryIngredientController())->add();
+            });
+            $router->addRoute('GET', '/catingredient/list', function () {
+                return (new CategoryIngredientController())->list();
             });
 
             $router->processRequest();

@@ -4,6 +4,7 @@ namespace UHA\Controllers;
 use UHA\Models\Nutritionniste;
 use UHA\Controllers\Controller;
 use UHA\Repositories\NutritionnisteRepository;
+session_start();
 
 class NutritionnisteController extends Controller{
    
@@ -70,12 +71,14 @@ class NutritionnisteController extends Controller{
             $success = $nutritionnisteRepository->insert($nutritionniste);
 
             if ($success) {
-                $successMessage = 'Les données ont été ajoutées avec succès.';
+                $_Session['successMessage'] = 'Les données ont été ajoutées avec succès.';
                 $this->view->setTemplateFile('nutritionnistes/add.phtml');
               //  $this->view->set('successMessage', $successMessage);
-              header('Location:/nutritionniste');
+              header('Location:/nutritionniste/list');
             } else {
-                // Gérer l'échec de l'insertion
+                $_SESSION['Errosmessage'] = 'Insertion non réussie.';
+
+                header("Location: /nutritionniste");
             }
 
             return $this->view->output();
