@@ -49,7 +49,7 @@ CREATE TABLE `nutritionnistes` (
   `nutritionniste_id` int(11) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
-  `spécialite` varchar(100) DEFAULT NULL
+  `specialite` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
