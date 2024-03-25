@@ -4,6 +4,7 @@ namespace UHA\Controllers;
 use UHA\Models\Nutritionniste;
 use UHA\Controllers\Controller;
 use UHA\Repositories\NutritionnisteRepository;
+session_start();
 
 class NutritionnisteController extends Controller{
    
@@ -12,11 +13,30 @@ class NutritionnisteController extends Controller{
         $this->view->setTemplateFile('nutritionnistes/add.phtml');
         return $this->view->output();
     }
+  
+    public function update($id) {
+        try {
+            // Récupérer le nutritionniste à modifier par son ID
+            $nutritionnisteRepository = new NutritionnisteRepository('nutritionnistes');
+            $nutritionniste = $nutritionnisteRepository->getById($id);
+            var_dump($nutritionniste);
     
-    public function all(){
-        $this->view->setTemplateFile('nutritionnistes/all.phtml');
-        return $this->view->output();
+            // Vérifier si le nutritionniste a été trouvé
+            if ($nutritionniste) {
+                // Passer les données du nutritionniste à la vue
+                $this->view->set('nutritionniste', $nutritionniste);
+                $this->view->setTemplateFile('nutritionnistes/update.phtml');
+                return $this->view->output();
+            } else {
+                // Gérer le cas où le nutritionniste n'a pas été trouvé
+                // Rediriger ou afficher un message d'erreur
+            }
+        } catch (\Exception $e) {
+            // Gérer les erreurs
+            echo "Une erreur s'est produite : " . $e->getMessage();
+        }
     }
+    
     public function list() {
         try {
             
@@ -51,12 +71,14 @@ class NutritionnisteController extends Controller{
             $success = $nutritionnisteRepository->insert($nutritionniste);
 
             if ($success) {
-                $successMessage = 'Les données ont été ajoutées avec succès.';
+                $_Session['successMessage'] = 'Les données ont été ajoutées avec succès.';
                 $this->view->setTemplateFile('nutritionnistes/add.phtml');
               //  $this->view->set('successMessage', $successMessage);
-              header('Location:/nutritionniste');
+              header('Location:/nutritionniste/list');
             } else {
-                // Gérer l'échec de l'insertion
+                $_SESSION['Errosmessage'] = 'Insertion non réussie.';
+
+                header("Location: /nutritionniste");
             }
 
             return $this->view->output();
@@ -64,5 +86,10 @@ class NutritionnisteController extends Controller{
             $this->view->setTemplateFile('nutritionnistes/add.phtml');
             return $this->view->output();
         }
+    }
+
+    public function all(){
+        $this->view->setTemplateFile('nutritionnistes/all.phtml');
+        return $this->view->output();
     }
 }

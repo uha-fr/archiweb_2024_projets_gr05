@@ -52,6 +52,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th scope="col">ID</th>
                     <th scope="col">Nom</th>
                     <th scope="col">Prénom</th>
                     <th scope="col">Spécialité</th>
@@ -61,11 +62,13 @@
             <tbody>
                 <?php foreach($this->get('nutritionnistes') as $nutritionniste):?>
                 <tr>
+                
+                    <td><?= $nutritionniste->getNutritionnisteId(); ?></td>
                     <td><?= $nutritionniste->getNom(); ?></td>
                     <td><?= $nutritionniste->getPrenom(); ?></td>
                     <td><?= $nutritionniste->getSpecialite(); ?></td>
                     <td>
-                        <button class="btn btn-success btn-modify"><i class="fas fa-edit"></i> Modifier</button>
+                        <a href="/nutritionniste/update/<?= $nutritionniste->getNutritionnisteId(); ?>" class="btn btn-success btn-modify"><i class="fas fa-edit"></i> Modifier</a>
                         <button class="btn btn-danger btn-delete"><i class="fas fa-trash-alt"></i> Supprimer</button>
                     </td>
                 </tr>

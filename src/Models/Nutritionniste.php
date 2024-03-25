@@ -4,7 +4,7 @@ use Doctrine\ORM\Mapping as ORM;
 use UHA\Repositories\NutritionnisteRepository;
 
 class Nutritionniste extends Model {
-    private $id;
+    private $nutritionniste_id;
     private $nom;
     private $prenom;
     private $specialite;
@@ -18,9 +18,10 @@ class Nutritionniste extends Model {
     }
    
     // Méthodes getters et setters
-    public function getId() {
-        return $this->id;
+    public function getNutritionnisteId() {
+        return $this->nutritionniste_id;
     }
+    
 
     public function getNom() {
         return $this->nom;

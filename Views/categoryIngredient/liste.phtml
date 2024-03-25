@@ -1,0 +1,28 @@
+@extends('home/base.phtml')
+
+<div class="container mt-4">
+  <h1>Liste des category Ingredient</h1>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Category</th>
+      <th colspan="2">Actions</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach($this->get('categoryIngredient') as $categoryIngredient) :?>
+    <tr>
+      <td><?= $categoryIngredient->getCategorieId();?></td>
+      <td><?= $categoryIngredient->getNom();?></td>
+      <td>
+        <a href="http://" class="btn btn-warning">Modifier</a>
+        <a href="http://" class="btn btn-danger">Supprimer</a>
+      </td>
+     
+    </tr>
+    <?php endforeach;?>
+  </tbody>
+</table>
+</div>
