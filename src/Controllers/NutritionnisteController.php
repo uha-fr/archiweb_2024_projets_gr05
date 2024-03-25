@@ -13,7 +13,10 @@ class NutritionnisteController extends Controller{
         return $this->view->output();
     }
     
-    
+    public function all(){
+        $this->view->setTemplateFile('nutritionnistes/all.phtml');
+        return $this->view->output();
+    }
     public function list() {
         try {
             

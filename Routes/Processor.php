@@ -20,6 +20,9 @@ class Processor{
         $router->addRoute('GET', '/nutritioniste', function () {
             return (new NutritionnisteController())->list();
         });
+        $router->addRoute('GET', '/nutritioniste/all', function () {
+            return (new NutritionnisteController())->all();
+        });
         $router->addRoute('GET', '/user/{id}', function ($id) {
             return (new UserController())->view($id);
         });
