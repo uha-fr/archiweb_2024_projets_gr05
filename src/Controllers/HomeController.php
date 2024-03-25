@@ -7,7 +7,8 @@ use UHA\Repositories\UserRepository;
 class HomeController extends Controller {
 
     public function index(){
-        $this->view->setTemplateFile('home/home.phtml');
+        // $this->view->setTemplateFile('home/home.phtml');
+        $this->view->setTemplateFile('anonymousLayout.phtml');
         return $this->view->output();
     }
 
