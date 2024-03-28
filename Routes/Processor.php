@@ -23,6 +23,10 @@ use \UHA\Controllers\LoginController;
             $router->addRoute('GET', '/login', function () {
                 return (new UserController())->login();
             });
+
+            $router->addRoute('POST','/login/process',function(){
+                return (new UserController())->loginProcess();
+            });
             // Gestion routes pour nutritionniste
             $router->addRoute('GET', '/nutritionniste', function () {
                 return (new NutritionnisteController())->form();

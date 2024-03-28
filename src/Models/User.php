@@ -10,7 +10,7 @@ use UHA\Repositories\UserRepository;
 class User extends Model
 {
 
-    private $id;
+    private $user_id;
 
     private $username;
 
@@ -18,12 +18,18 @@ class User extends Model
 
     private $email;
 
+    private $nom;
+
+    private $prenom;
+
     private $password;
+
+    private $role;
 
     public function __construct()
     {
         parent::__construct();
-        $this->setTable("User");
+        $this->setTable("utilisateurs");
         $this->repository = new UserRepository($this->table);
     }
 
@@ -116,6 +122,17 @@ class User extends Model
         $this->password = $password;
 
         return $this;
+    }
+
+    public function getRole(){
+        if($this->role == null){
+            $role = $this->repository->getRole($this->user_id);
+        }
+        return $this->role;
+    }
+
+    public function assignRole(Role $role){
+
     }
 }
 

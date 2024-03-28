@@ -11,6 +11,23 @@ class UserController extends Controller {
         $this->view->setTemplateFile('login.phtml');
         return $this->view->output();
     }
+
+    public function loginProcess(){
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+
+        // print_r($password);
+
+        if(($user=$this->securityGuard->authenticate($email,$password)) != null){
+            $this->securityGuard->storeInSession($user);
+            header("Location: /home");
+        } else{
+            $_SESSION["message"] = "Mot de passe ou erroné";
+            header("Location: /login");
+        }
+    }
+
+
     public function auth(){
         $email = $_POST["email"];
         $password = $_POST["password"];
